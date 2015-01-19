@@ -6,8 +6,7 @@ import java.awt.*;
 
 public class HanoiFrame extends JFrame {
 
-    public HanoiFrame()
-    {
+    public HanoiFrame() {
         // creates the JFrame with the given name
         super("Tower Of Hanoi");
 
@@ -19,6 +18,7 @@ public class HanoiFrame extends JFrame {
 
         // sets the frame's size
         setPreferredSize(new Dimension(700, 500));
+        Logger.logCodeMessage("Size of Window is 700x500 pixels.");
 
         // creates the window
         pack();
@@ -28,6 +28,9 @@ public class HanoiFrame extends JFrame {
 
     }
 
+    public void paint(Graphics g) {
+        //todo paint scene to screen
+    }
 
 
 }

@@ -1,7 +1,6 @@
 package pack1;
 
 import java.awt.*;
-import java.security.PublicKey;
 
 public class Disk {
 
@@ -13,16 +12,22 @@ public class Disk {
         this.color = getColor(size);
     }
 
-    public Color getColor(int size)
-    {
-        switch (size)
-        {
+    public Color getColor(int size) {
+        switch (size) {
             case 1:
                 return Color.BLACK;
             case 2:
                 return Color.BLUE;
-
-
+            case 3:
+                return Color.RED;
+            case 4:
+                return Color.ORANGE;
+            case 5:
+                return Color.YELLOW;
+            case 6:
+                return Color.MAGENTA;
+            case 7:
+                return Color.WHITE;
         }
 
 
