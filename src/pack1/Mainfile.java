@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 public class Mainfile implements KeyListener {
 
     public static void main(String[] args) {
+
         JOptionPane.showMessageDialog(null, "Welcome to Tower of Hanoi.\n To move, press the number to move, then the number to move to.");
         Logger.logCodeMessage("Welcome Pane shown.");
         int disksAmt;
@@ -22,7 +23,7 @@ public class Mainfile implements KeyListener {
         Logger.logUserMessage("Amount of disks is " + disksAmt);
 
         HanoiFrame frame = new HanoiFrame();
-        Stack diskStack = new Stack(disksAmt);
+        Stack<Disk> diskStack = new Stack<>(disksAmt);
         Logger.logCodeMessage("Frame and stack Created.");
 
 
@@ -31,7 +32,6 @@ public class Mainfile implements KeyListener {
     public void keyPressed(KeyEvent e) {
         //unused
     }
-
     public void keyReleased(KeyEvent e) {
         //unused
     }

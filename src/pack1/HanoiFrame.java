@@ -11,7 +11,7 @@ public class HanoiFrame extends JFrame {
         super("Tower Of Hanoi");
 
         // Sets the close button to exit the program
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // makes the window not able to be resized
         setResizable(false);
