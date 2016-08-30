@@ -7,7 +7,8 @@ import java.awt.image.BufferedImage;
 
 public class HanoiFrame extends JFrame {
 
-    private int windowWidth = 700, windowHeight = 500;
+    private int windowWidth = 700, windowHeight = 500, topHeight = 30; //size of the window.
+
     private BufferedImage buffer = new BufferedImage(windowWidth, windowHeight, BufferedImage.TYPE_4BYTE_ABGR);
 
     public HanoiFrame() {
@@ -32,6 +33,7 @@ public class HanoiFrame extends JFrame {
         setVisible(true);
         setFocusable(true);
 
+
     }
 
     public void paint(Graphics g) {
@@ -47,14 +49,14 @@ public class HanoiFrame extends JFrame {
         bg.fillRect(20, windowHeight - 40, windowWidth - 20, 20);
 
         //disk spikes
-        bg.fillRect(windowWidth / 3, 20, 30, windowHeight);
+        bg.fillRect(windowWidth / 3, 40, 30, windowHeight);
 
         //find window border
 
         bg.setColor(Color.BLUE);
-        bg.drawRect(0, 0, windowWidth, windowHeight);
-        bg.drawRect(1, 1, windowWidth - 1, windowHeight - 1);
-        bg.drawRect(2, 2, windowWidth - 1, windowHeight - 1);
+        bg.drawRect(0, topHeight, windowWidth, windowHeight);
+        bg.drawRect(1, topHeight + 1, windowWidth - 1, windowHeight - 1);
+        bg.drawRect(2, topHeight + 2, windowWidth - 2, windowHeight - 2);
 
         g.drawImage(buffer, 0, 0, null); //draw buffer to screen
     }
