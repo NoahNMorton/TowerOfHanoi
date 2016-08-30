@@ -39,11 +39,11 @@ public class HanoiFrame extends JFrame {
 
         //background
         bg.setColor(Color.white);
-        bg.drawRect(0, 0, getWidth(), getHeight());
+        bg.fillRect(0, 0, getWidth(), getHeight());
 
         //base
         bg.setColor(Color.gray);
-        bg.drawRect(0, getHeight() - 20, getWidth(), 20);
+        bg.fillRect(0, getHeight() - 40, getWidth(), 20);
 
 
         g.drawImage(buffer, 0, 0, null); //draw buffer to screen
