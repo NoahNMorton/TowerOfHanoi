@@ -7,7 +7,8 @@ import java.awt.image.BufferedImage;
 
 public class HanoiFrame extends JFrame {
 
-    private BufferedImage buffer = new BufferedImage(700, 500, BufferedImage.TYPE_4BYTE_ABGR);
+    private int windowWidth = 700, windowHeight = 500;
+    private BufferedImage buffer = new BufferedImage(windowWidth, windowHeight, BufferedImage.TYPE_4BYTE_ABGR);
 
     public HanoiFrame() {
         // creates the JFrame with the given name
@@ -21,8 +22,8 @@ public class HanoiFrame extends JFrame {
         setResizable(false);
 
         // sets the frame's size
-        setPreferredSize(new Dimension(700, 500));
-        Logger.logCodeMessage("Size of Window is 700x500 pixels.");
+        setPreferredSize(new Dimension(windowWidth, windowHeight));
+        Logger.logCodeMessage("Size of Window is " + windowWidth + "x" + windowHeight + " pixels.");
 
         // creates the window
         pack();
@@ -39,12 +40,21 @@ public class HanoiFrame extends JFrame {
 
         //background
         bg.setColor(Color.white);
-        bg.fillRect(0, 0, getWidth(), getHeight());
+        bg.fillRect(0, 0, windowWidth, windowHeight);
 
         //base
         bg.setColor(Color.gray);
-        bg.fillRect(0, getHeight() - 40, getWidth(), 20);
+        bg.fillRect(20, windowHeight - 40, windowWidth - 20, 20);
 
+        //disk spikes
+        bg.fillRect(windowWidth / 3, 20, 30, windowHeight);
+
+        //find window border
+
+        bg.setColor(Color.BLUE);
+        bg.drawRect(0, 0, windowWidth, windowHeight);
+        bg.drawRect(1, 1, windowWidth - 1, windowHeight - 1);
+        bg.drawRect(2, 2, windowWidth - 1, windowHeight - 1);
 
         g.drawImage(buffer, 0, 0, null); //draw buffer to screen
     }
