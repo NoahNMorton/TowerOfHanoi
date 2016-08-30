@@ -1,48 +1,46 @@
 package pack1;
-/*
-*Author: Noah Morton
-*Date created: 8/28/16, 12:56 PM
-*Part of project: StackTester
-*/
 
 import java.util.ArrayList;
 
-public class Stack<E> implements StackInterface<E> {
+public class Stack implements StackInterface<Disk> {
 
-    private ArrayList<E> stack;
+    @SuppressWarnings("CanBeFinal")
+    public ArrayList<Disk> stack = new ArrayList<Disk>();
 
-    public Stack(int disAmt) {
-        this.stack = new ArrayList<>();
+    public Stack(int diskAmt) { //fills the stack arrayList with the appropriate amount of disks.
+        for (int i = 0; i < diskAmt; i++) {
+            stack.add(new Disk(i));
+        }
     }
 
-    @Override
-    public E push(E o) {
-        stack.add(0,o);
-        return o;
+    public Disk push(Disk o) {
+        stack.add(0, o);
+        return null;
     }
 
-    @Override
-    public E peek() {
+    public Disk peek() {
         return stack.get(0);
     }
 
-    @Override
-    public E pop() {
+    public Disk pop() {
         return stack.remove(0);
     }
 
-    @Override
-    public boolean empty() {
-        return stack.size()==0;
-    }
 
+    public boolean empty() {
+        return stack.size() == 0;
+    }
 
     public int size() {
         return stack.size();
     }
 
-
-    public E get(int x) {
-        return stack.get(x);
+    public Disk get(int x) {
+        try {
+            return stack.get(x);
+        } catch (Exception e) {
+            System.out.println("Invalid Index.");
+        }
+        return null;
     }
 }
