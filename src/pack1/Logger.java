@@ -11,13 +11,13 @@ import java.io.FileWriter;
  * @version 0.0.1
  */
 
+@SuppressWarnings("ALL")
 public class Logger {
     private static File f;
 
     public Logger() {
         f = new File("programLog.log");
     }
-
 
     //logs a code message, such as a creation success.
     public static void logCodeMessage(String message) {

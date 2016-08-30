@@ -30,7 +30,6 @@ public class Disk {
                 return Color.WHITE;
         }
 
-
         return null;
     }
 }
