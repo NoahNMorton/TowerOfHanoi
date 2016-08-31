@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Mainfile implements KeyListener {
+public class Mainfile {
 
     public static void main(String[] args) {
         Logger logger = new Logger(); //unused, just to call constructor
@@ -30,15 +30,5 @@ public class Mainfile implements KeyListener {
 
     }
 
-    public void keyPressed(KeyEvent e) {
-        //unused
-    }
 
-    public void keyReleased(KeyEvent e) {
-        //unused
-    }
-
-    public void keyTyped(KeyEvent e) {
-        //todo movement keys
-    }
 }

@@ -2,10 +2,12 @@ package pack1;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 
-public class HanoiFrame extends JFrame {
+public class HanoiFrame extends JFrame implements KeyListener {
 
     private int windowWidth = 700, windowHeight = 500; //size of the window.
 
@@ -15,7 +17,6 @@ public class HanoiFrame extends JFrame {
         // creates the JFrame with the given name
         super("Tower Of Hanoi");
 
-
         // Sets the close button to exit the program
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -23,15 +24,11 @@ public class HanoiFrame extends JFrame {
         setResizable(false);
 
         // sets the frame's size
-        setPreferredSize(new Dimension(windowWidth, windowHeight));
+        setSize(windowWidth, windowHeight);
         Logger.logCodeMessage("Size of Window is " + windowWidth + "x" + windowHeight + " pixels.");
-
-        // creates the window
-        pack();
 
         // shows the frame
         setVisible(true);
-
 
     }
 
@@ -48,17 +45,25 @@ public class HanoiFrame extends JFrame {
         bg.fillRect(20, windowHeight - 40, windowWidth - 20, 20);
 
         //disk spikes
-        bg.fillRect(windowWidth / 3, 40, 30, windowHeight - 20);
-
-        //find window border
-
-        bg.setColor(Color.BLUE);
-        bg.drawRect(0, 0, windowWidth, windowHeight);
-        bg.drawRect(1, 1, windowWidth - 1, windowHeight - 1);
-        bg.drawRect(2, 2, windowWidth - 2, windowHeight - 2);
+        for (int i = windowWidth/4; i<windowWidth; i+=windowWidth/4) {
+            bg.fillRect(i, 100, 30, windowHeight-130);
+        }
 
         //g.drawImage(buffer, 0, 0, null); //draw buffer to screen
     }
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+        //todo movement key handling
+    }
 
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
 }
