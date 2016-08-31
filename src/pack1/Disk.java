@@ -12,6 +12,10 @@ public class Disk {
         this.color = getColor(size);
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public Color getColor(int size) {
         switch (size) {
             case 1:
@@ -27,7 +31,7 @@ public class Disk {
             case 6:
                 return Color.MAGENTA;
             case 7:
-                return Color.WHITE;
+                return Color.green;
         }
 
         return null;

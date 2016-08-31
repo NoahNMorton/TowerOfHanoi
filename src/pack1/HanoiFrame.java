@@ -1,10 +1,12 @@
 package pack1;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 
 public class HanoiFrame extends JFrame implements KeyListener {
@@ -22,7 +24,6 @@ public class HanoiFrame extends JFrame implements KeyListener {
         super("Tower Of Hanoi");// creates the JFrame with the given name
 
         //setup disks, stacks, etc.
-
         diskStack1 = new Stack(disksAmt);
         diskStack2 = new Stack(0);
         diskStack3 = new Stack(0);
@@ -37,7 +38,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
     }
 
     public void paint(Graphics bg) {
-        //todo paint graphics to screen
+        //todo paint graphics to screen, reinstate buffered graphics
         //Graphics bg = buffer.getGraphics();
 
         //background
@@ -48,13 +49,50 @@ public class HanoiFrame extends JFrame implements KeyListener {
         bg.setColor(Color.gray);
         bg.fillRect(20, windowHeight - 40, windowWidth - 20, 20);
 
-        //disk spikes
+        //disk poles
         for (int i = windowWidth/4; i<windowWidth; i+=windowWidth/4) {
             bg.fillRect(i, 100, 30, windowHeight-130);
         }
 
         //Displaying disks on poles
 
+        //pole 1
+        int pole1X = windowWidth / 4; //x position of pole 1.
+
+        if (!diskStack1.empty()) { //don't show anything if the pole is empty
+            for (int i = diskStack1.size() - 1; i >= 0; i--) {
+
+                switch (diskStack1.get(i).getSize()) {
+                    case 1: //smallest
+
+
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7: //largest
+                        bg.setColor(diskStack1.get(i).getColor(7));
+                        bg.fillRect(pole1X - 20, i * 100, 90, 20);
+                        break;
+                    default:
+                        System.err.println("Invalid disk size found. Size is: " + diskStack1.get(i).getSize());
+                        break;
+                }
+
+            }
+        }
+
+        //pole 2
+
+
+        //pole 3
 
 
 
