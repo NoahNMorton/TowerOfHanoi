@@ -25,9 +25,24 @@ public class Mainfile {
         Logger.logUserMessage("Amount of disks is " + disksAmt);
 
         HanoiFrame frame = new HanoiFrame();
-        Stack diskStack = new Stack(disksAmt);
-        Logger.logCodeMessage("Frame and stack Created.");
 
+        //create stacks for poles
+        Stack diskStack1 = new Stack(disksAmt);
+        Stack diskStack2 = new Stack(0);
+        Stack diskStack3 = new Stack(0);
+
+
+        Logger.logCodeMessage("Frame and stacks Created.");
+
+    }
+
+    /**
+     * Moves a disk from one stack to another stack
+     * @param from The stack to move from
+     * @param to The stack to move to.
+     */
+    public static void transfer(Stack from, Stack to) {
+        to.push(from.pop());
     }
 
 

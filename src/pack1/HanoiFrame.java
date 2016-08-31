@@ -49,12 +49,29 @@ public class HanoiFrame extends JFrame implements KeyListener {
             bg.fillRect(i, 100, 30, windowHeight-130);
         }
 
+
         //g.drawImage(buffer, 0, 0, null); //draw buffer to screen
     }
+
+    //variables for keyTyped
+    private boolean secondKey = false;
+    private char firstKeyChar = ' ';
+    private char secondKeyChar = ' ';
+
 
     @Override
     public void keyTyped(KeyEvent e) {
         //todo movement key handling
+
+        //determine what key press this was
+        if (!secondKey) { //if this is the second key pressed
+            firstKeyChar = e.getKeyChar();
+            secondKey = true;
+        } else {
+            secondKeyChar = e.getKeyChar();
+            secondKey = false; //next key will be first key
+        }
+
     }
 
     @Override
