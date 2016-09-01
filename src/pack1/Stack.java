@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Stack implements StackInterface<Disk> {
 
     @SuppressWarnings("CanBeFinal")
-    public ArrayList<Disk> stack = new ArrayList<Disk>();
+    private ArrayList<Disk> stack = new ArrayList<>();
 
     public Stack(int diskAmt) { //fills the stack arrayList with the appropriate amount of disks.
         for (int i = 0; i < diskAmt; i++) {

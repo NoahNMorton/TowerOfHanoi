@@ -2,10 +2,11 @@ package pack1;
 
 import java.awt.*;
 
+@SuppressWarnings({"CanBeFinal", "FieldCanBeLocal"})
 public class Disk {
 
-    public int size; //will be between 1-7
-    public Color color;
+    private int size; //will be between 1-7
+    private Color color;
 
     public Disk(int size) {
         this.size = size;

@@ -1,5 +1,6 @@
 package pack1;
 
+@SuppressWarnings("ALL")
 public interface StackInterface<E> {
     E push(E o);
 

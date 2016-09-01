@@ -1,8 +1,6 @@
 package pack1;
 
 import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class Mainfile {
 
@@ -24,7 +22,7 @@ public class Mainfile {
         } while (true);
         Logger.logUserMessage("Amount of disks is " + disksAmt);
 
-        HanoiFrame frame = new HanoiFrame(disksAmt);
+        new HanoiFrame(disksAmt);
         Logger.logCodeMessage("Frame and stacks Created.");
 
     }
