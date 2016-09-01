@@ -107,17 +107,40 @@ public class HanoiFrame extends JFrame implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        //todo movement key handling
-
         //determine what key press this was
+
         if (!secondKey) { //if this is the first key pressed
             firstKeyChar = e.getKeyChar();
             secondKey = true; //next key will be the second key
         } else { //this is the second key
             secondKeyChar = e.getKeyChar();
             secondKey = false; //next typed key will be first key
+            //make the movement
+            if(firstKeyChar=='1' && secondKeyChar=='2') { //1>2
+                transfer(diskStack1, diskStack2);
+                Logger.logUserMessage("Moved disk from stack 1 to stack 2.");
+            }
+            if(firstKeyChar=='1' && secondKeyChar=='3') { //1>3
+                transfer(diskStack1, diskStack3);
+                Logger.logUserMessage("Moved disk from stack 1 to stack 3.");
+            }
+            if(firstKeyChar=='2' && secondKeyChar=='1') { //2>1
+                transfer(diskStack2, diskStack1);
+                Logger.logUserMessage("Moved disk from stack 2 to stack 1.");
+            }
+            if(firstKeyChar=='2' && secondKeyChar=='3') { //2>3
+                transfer(diskStack2, diskStack3);
+                Logger.logUserMessage("Moved disk from stack 2 to stack 3.");
+            }
+            if(firstKeyChar=='3' && secondKeyChar=='2') { //3>2
+                transfer(diskStack3, diskStack2);
+                Logger.logUserMessage("Moved disk from stack 3 to stack 2.");
+            }
+            if(firstKeyChar=='3' && secondKeyChar=='1') { //3>1
+                transfer(diskStack3, diskStack1);
+                Logger.logUserMessage("Moved disk from stack 3 to stack 1.");
+            }
         }
-
     }
 
     @Override
