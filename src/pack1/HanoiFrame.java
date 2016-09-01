@@ -137,6 +137,11 @@ public class HanoiFrame extends JFrame implements KeyListener {
      * @param to   The stack to move to.
      */
     public static void transfer(Stack from, Stack to) {
-        to.push(from.pop());
+        if(from.peek().getSize()>to.peek().getSize()) { //if small disk onto larger disk
+            System.out.println("Cannot move small disk onto larger disk.");
+            JOptionPane.showMessageDialog(null, "Cannot move smaller disk onto larger disk. \nTry another move."); //warn the user about invalid move
+            Logger.logUserMessage("User attempted invalid move.");
+        } else
+            to.push(from.pop());
     }
 }
