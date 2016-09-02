@@ -2,6 +2,7 @@ package pack1;
 
 import javax.swing.*;
 
+@SuppressWarnings("WeakerAccess")
 public class Mainfile {
 
     public static void main(String[] args) {

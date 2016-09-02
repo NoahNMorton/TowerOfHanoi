@@ -43,4 +43,13 @@ public class Stack implements StackInterface<Disk> {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        String finalString = "";
+        for (Disk aStack : stack) {
+            finalString += aStack.toString() + "\n";
+        }
+        return finalString;
+    }
 }

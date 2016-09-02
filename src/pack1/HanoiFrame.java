@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 
-@SuppressWarnings({"CanBeFinal", "FieldCanBeLocal"})
+@SuppressWarnings({"CanBeFinal", "FieldCanBeLocal", "WeakerAccess"})
 public class HanoiFrame extends JFrame implements KeyListener {
 
     private int windowWidth = 700, windowHeight = 500; //size of the window.
