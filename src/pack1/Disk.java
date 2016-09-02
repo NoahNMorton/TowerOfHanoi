@@ -34,7 +34,6 @@ public class Disk {
             case 6:
                 return Color.green;
         }
-
         return null;
     }
 

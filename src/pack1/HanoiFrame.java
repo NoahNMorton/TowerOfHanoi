@@ -12,7 +12,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
     private int windowWidth = 700, windowHeight = 500; //size of the window.
 
     //private BufferedImage buffer = new BufferedImage(windowWidth, windowHeight, BufferedImage.TYPE_4BYTE_ABGR);
-
+    private int diskHeight;
     //stacks for poles
     private Stack diskStack1;
     private Stack diskStack2;
@@ -23,8 +23,9 @@ public class HanoiFrame extends JFrame implements KeyListener {
 
         //setup disks, stacks, etc.
         diskStack1 = new Stack(disksAmt);
-        diskStack2 = new Stack(0);
+        diskStack2 = new Stack(0); //other two stacks start empty
         diskStack3 = new Stack(0);
+        diskHeight = 300 / disksAmt;
 
         //window handling
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);// Sets the close button to exit the program
@@ -62,7 +63,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
                 switch (diskStack1.get(i).getSize()) {
                     case 0: //smallest
                         bg.setColor(diskStack1.get(i).getColor(0));
-                        bg.fillRect(pole1X - 20, i * 100, 90, 20);
+                        bg.fillRect(pole1X - 20, i * 100, 90, diskHeight);
                         break;
                     case 1:
                         bg.setColor(diskStack1.get(i).getColor(1));
