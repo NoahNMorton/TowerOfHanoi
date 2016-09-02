@@ -61,9 +61,11 @@ public class HanoiFrame extends JFrame implements KeyListener {
             for (int i = diskStack1.size() - 1; i >= 0; i--) {
 
                 switch (diskStack1.get(i).getSize()) {
-                    case 1: //smallest
+                    case 0: //smallest
 
 
+                        break;
+                    case 1:
                         break;
                     case 2:
                         break;
@@ -73,10 +75,8 @@ public class HanoiFrame extends JFrame implements KeyListener {
                         break;
                     case 5:
                         break;
-                    case 6:
-                        break;
-                    case 7: //largest
-                        bg.setColor(diskStack1.get(i).getColor(7));
+                    case 6: //largest
+                        bg.setColor(diskStack1.get(i).getColor(6));
                         bg.fillRect(pole1X - 20, i * 100, 90, 20);
                         break;
                     default:
