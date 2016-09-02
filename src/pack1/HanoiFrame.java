@@ -59,31 +59,33 @@ public class HanoiFrame extends JFrame implements KeyListener {
 
         if (!diskStack1.empty()) { //don't show anything if the pole is empty
             for (int i = diskStack1.size() - 1; i >= 0; i--) {
-
                 switch (diskStack1.get(i).getSize()) {
                     case 0: //smallest
-
-
+                        bg.setColor(diskStack1.get(i).getColor(0));
+                        bg.fillRect(pole1X - 20, i * 100, 90, 20);
                         break;
                     case 1:
+                        bg.setColor(diskStack1.get(i).getColor(1));
                         break;
                     case 2:
+                        bg.setColor(diskStack1.get(i).getColor(2));
                         break;
                     case 3:
+                        bg.setColor(diskStack1.get(i).getColor(3));
                         break;
                     case 4:
+                        bg.setColor(diskStack1.get(i).getColor(4));
                         break;
                     case 5:
+                        bg.setColor(diskStack1.get(i).getColor(5));
                         break;
                     case 6: //largest
                         bg.setColor(diskStack1.get(i).getColor(6));
-                        bg.fillRect(pole1X - 20, i * 100, 90, 20);
                         break;
                     default:
                         System.err.println("Invalid disk size found. Size is: " + diskStack1.get(i).getSize());
                         break;
                 }
-
             }
         }
 
