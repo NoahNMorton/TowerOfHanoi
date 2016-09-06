@@ -17,11 +17,11 @@ public class Logger {
 
     public Logger() {
         f = new File("programLog.log");
+        Logger.logOtherMessage("New Run","----------------------\n");
     }
 
     //logs a code message, such as a creation success.
     public static void logCodeMessage(String message) {
-
         try {
             FileWriter fw = new FileWriter(f, true); //the true will append the new data
             fw.write("\n[Code] " + message);

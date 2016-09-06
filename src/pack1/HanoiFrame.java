@@ -57,15 +57,17 @@ public class HanoiFrame extends JFrame implements KeyListener {
         //Displaying disks on poles
 
         //pole 1
-        int pole1X = windowWidth / 4; //x position of pole 1.
+        int pole1X = (windowWidth / 4)+15; //x position of the center of pole 1.
 
         if (!diskStack1.empty()) { //don't show anything if the pole is empty
             for (int i = diskStack1.size() - 1; i >= 0; i--) {
 
                 switch (diskStack1.get(i).getSize()) {
-                    case 1: //smallest
+                    case 0: //smallest
 
 
+                        break;
+                    case 1:
                         break;
                     case 2:
                         break;
@@ -75,9 +77,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
                         break;
                     case 5:
                         break;
-                    case 6:
-                        break;
-                    case 7: //largest
+                    case 6: //largest
                         bg.setColor(diskStack1.get(i).getColor(7));
                         bg.fillRect(pole1X - 20, i * 100, 90, 20);
                         break;
@@ -93,8 +93,8 @@ public class HanoiFrame extends JFrame implements KeyListener {
 
 
         //pole 3
-
-
+        bg.setColor(Color.black);
+        bg.fillRect(100,100,10,10);
 
         //g.drawImage(buffer, 0, 0, null); //draw buffer to screen
     }
