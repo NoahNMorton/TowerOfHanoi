@@ -27,6 +27,8 @@ public class HanoiFrame extends JFrame implements KeyListener {
         diskStack3 = new Stack(0);
         diskHeight = 300 / disksAmt;
 
+
+
         //window handling
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);// Sets the close button to exit the program
         setResizable(false);// makes the window not able to be resized
@@ -50,7 +52,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
 
         //disk poles
         for (int i = windowWidth / 4; i < windowWidth; i += windowWidth / 4) {
-            bg.fillRect(i, 100, 30, windowHeight - 130);
+            bg.fillRect(i, 100, 15, windowHeight - 130);
         }
 
         //Displaying disks on poles
@@ -78,7 +80,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
                     case 5:
                         bg.setColor(diskStack1.get(i).getColor(4));
                         break;
-                    case 6:
+                    case 6: //largest
                         bg.setColor(diskStack1.get(i).getColor(5));
                         break;
                     default:
@@ -91,7 +93,22 @@ public class HanoiFrame extends JFrame implements KeyListener {
         //pole 2
 
 
+
         //pole 3
+
+
+        //debug statements for visual aid //FIXME remove me once done
+        /*
+        This ends up being 300 px tall, and 170 px wide. It provides a 170x300 space to draw disks.
+        The height per disk will be 300/disk amount.
+         */
+        bg.setColor(Color.black);
+        bg.fillRect(90,140,10,10);
+        bg.fillRect(270,460,10,10);
+        bg.drawRect(100,150,170,310);
+
+        fillCenteredRect(pole1X,200,40,diskHeight,bg);
+
 
         //g.drawImage(buffer, 0, 0, null); //draw buffer to screen
     }
@@ -164,4 +181,20 @@ public class HanoiFrame extends JFrame implements KeyListener {
         } else
             to.push(from.pop());
     }
+
+
+    /**
+     * Draws a rectangle where the center of the rectangle is the X, instead of the upper left corner.
+     * Height works similar to drawRect.
+     * @param x X value to draw from.
+     * @param y Y value to draw from
+     * @param width Width of the rectangle
+     * @param height height of the rectangle
+     * @param graphics Graphics to use to draw.
+     */
+    private void fillCenteredRect(int x, int y, int width, int height, Graphics graphics) { //todo finish this method
+        int newX = x-width/2;
+        graphics.fillRect(newX,y,newX-(newX/2),height);
+    }
+
 }
