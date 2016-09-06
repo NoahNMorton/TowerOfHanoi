@@ -2,10 +2,11 @@ package pack1;
 
 import java.awt.*;
 
+@SuppressWarnings({"CanBeFinal", "FieldCanBeLocal"})
 public class Disk {
 
-    public int size; //will be between 1-7
-    public Color color;
+    private int size; //will be between 1-7
+    private Color color;
 
     public Disk(int size) {
         this.size = size;
@@ -18,22 +19,26 @@ public class Disk {
 
     public Color getColor(int size) {
         switch (size) {
-            case 1:
+            case 0:
                 return Color.BLACK;
-            case 2:
+            case 1:
                 return Color.BLUE;
-            case 3:
+            case 2:
                 return Color.RED;
-            case 4:
+            case 3:
                 return Color.ORANGE;
-            case 5:
+            case 4:
                 return Color.YELLOW;
-            case 6:
+            case 5:
                 return Color.MAGENTA;
-            case 7:
+            case 6:
                 return Color.green;
         }
-
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return "Disk{Size:" + size + ", Color:" + color + "}";
     }
 }

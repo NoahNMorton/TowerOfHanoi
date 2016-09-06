@@ -1,9 +1,8 @@
 package pack1;
 
 import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
+@SuppressWarnings("WeakerAccess")
 public class Mainfile {
 
     public static void main(String[] args) {

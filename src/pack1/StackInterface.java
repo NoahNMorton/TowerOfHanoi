@@ -1,11 +1,12 @@
 package pack1;
 
+@SuppressWarnings("ALL")
 public interface StackInterface<E> {
-    E push(E o);
+    public E push(E o);
 
-    E peek();
+    public E peek();
 
-    E pop();
+    public E pop();
 
     boolean empty();
 }
