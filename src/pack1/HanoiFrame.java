@@ -26,10 +26,10 @@ public class HanoiFrame extends JFrame implements KeyListener {
         diskStack2 = new Stack(0); //other two stacks start empty
         diskStack3 = new Stack(0);
         diskHeight = 300 / disksAmt;
-        addKeyListener(this);
 
 
         //window handling
+        addKeyListener(this);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);// Sets the close button to exit the program
         setResizable(false);// makes the window not able to be resized
         setSize(windowWidth, windowHeight);// sets the frame's size
@@ -106,7 +106,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
         bg.fillRect(270, 460, 10, 10);
         bg.drawRect(100, 150, 170, 310);
 
-        fillCenteredRect(pole1X, 200, 40, diskHeight, bg);
+        fillCenteredRect(pole1X, 200, 70, diskHeight, bg);
 
 
         //g.drawImage(buffer, 0, 0, null); //draw buffer to screen
@@ -201,7 +201,10 @@ public class HanoiFrame extends JFrame implements KeyListener {
      */
     private void fillCenteredRect(int x, int y, int width, int height, Graphics graphics) { //todo finish this method
         int newX = x - width / 2;
-        graphics.fillRect(newX, y, newX - (newX / 2), height);
+        System.out.println("Pole x is "+x);
+        System.out.println("half of width is "+width/2);
+        System.out.println("New x is:" +newX);
+        graphics.fillRect(newX, y, width/2, height);
     }
 
 }
