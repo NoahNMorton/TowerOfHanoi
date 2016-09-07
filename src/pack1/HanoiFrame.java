@@ -26,7 +26,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
         diskStack2 = new Stack(0); //other two stacks start empty
         diskStack3 = new Stack(0);
         diskHeight = 300 / disksAmt;
-
+        addKeyListener(this);
 
 
         //window handling
@@ -58,7 +58,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
         //Displaying disks on poles
 
         //pole 1
-        int pole1X = (windowWidth / 4)+15; //x position of the center of pole 1.
+        int pole1X = (windowWidth / 4) + 15; //x position of the center of pole 1.
 
         if (!diskStack1.empty()) { //don't show anything if the pole is empty
             for (int i = diskStack1.size() - 1; i >= 0; i--) {
@@ -93,7 +93,6 @@ public class HanoiFrame extends JFrame implements KeyListener {
         //pole 2
 
 
-
         //pole 3
 
 
@@ -103,11 +102,11 @@ public class HanoiFrame extends JFrame implements KeyListener {
         The height per disk will be 300/disk amount.
          */
         bg.setColor(Color.black);
-        bg.fillRect(90,140,10,10);
-        bg.fillRect(270,460,10,10);
-        bg.drawRect(100,150,170,310);
+        bg.fillRect(90, 140, 10, 10);
+        bg.fillRect(270, 460, 10, 10);
+        bg.drawRect(100, 150, 170, 310);
 
-        fillCenteredRect(pole1X,200,40,diskHeight,bg);
+        fillCenteredRect(pole1X, 200, 40, diskHeight, bg);
 
 
         //g.drawImage(buffer, 0, 0, null); //draw buffer to screen
@@ -131,28 +130,28 @@ public class HanoiFrame extends JFrame implements KeyListener {
             secondKey = false; //next typed key will be first key
             //make the movement
             if (firstKeyChar == '1' && secondKeyChar == '2') { //1>2
-                transfer(diskStack1, diskStack2);
-                Logger.logUserMessage("Moved disk from stack 1 to stack 2.");
+                if (transfer(diskStack1, diskStack2))
+                    Logger.logUserMessage("Moved disk from stack 1 to stack 2.");
             }
             if (firstKeyChar == '1' && secondKeyChar == '3') { //1>3
-                transfer(diskStack1, diskStack3);
-                Logger.logUserMessage("Moved disk from stack 1 to stack 3.");
+                if (transfer(diskStack1, diskStack3))
+                    Logger.logUserMessage("Moved disk from stack 1 to stack 3.");
             }
             if (firstKeyChar == '2' && secondKeyChar == '1') { //2>1
-                transfer(diskStack2, diskStack1);
-                Logger.logUserMessage("Moved disk from stack 2 to stack 1.");
+                if (transfer(diskStack2, diskStack1))
+                    Logger.logUserMessage("Moved disk from stack 2 to stack 1.");
             }
             if (firstKeyChar == '2' && secondKeyChar == '3') { //2>3
-                transfer(diskStack2, diskStack3);
-                Logger.logUserMessage("Moved disk from stack 2 to stack 3.");
+                if (transfer(diskStack2, diskStack3))
+                    Logger.logUserMessage("Moved disk from stack 2 to stack 3.");
             }
             if (firstKeyChar == '3' && secondKeyChar == '2') { //3>2
-                transfer(diskStack3, diskStack2);
-                Logger.logUserMessage("Moved disk from stack 3 to stack 2.");
+                if (transfer(diskStack3, diskStack2))
+                    Logger.logUserMessage("Moved disk from stack 3 to stack 2.");
             }
             if (firstKeyChar == '3' && secondKeyChar == '1') { //3>1
-                transfer(diskStack3, diskStack1);
-                Logger.logUserMessage("Moved disk from stack 3 to stack 1.");
+                if (transfer(diskStack3, diskStack1))
+                    Logger.logUserMessage("Moved disk from stack 3 to stack 1.");
             }
         }
     }
@@ -173,28 +172,36 @@ public class HanoiFrame extends JFrame implements KeyListener {
      * @param from The stack to move from
      * @param to   The stack to move to.
      */
-    private static void transfer(Stack from, Stack to) {
-        if (from.peek().getSize() > to.peek().getSize()) { //if small disk onto larger disk
-            System.out.println("Cannot move small disk onto larger disk.");
-            JOptionPane.showMessageDialog(null, "Cannot move smaller disk onto larger disk. \nTry another move."); //warn the user about invalid move
-            Logger.logUserMessage("User attempted invalid move.");
-        } else
+    private static boolean transfer(Stack from, Stack to) {
+        if (!(from.empty()) && to.empty()) {
             to.push(from.pop());
+            return true;
+        }
+        if (from.empty() || from.peek().getSize() > to.peek().getSize()) { //if bad move, from is empty, large onto small, etc.
+            System.out.println("Invalid move made.");
+            JOptionPane.showMessageDialog(null, "Invalid move. \nTry another move."); //warn the user about invalid move
+            Logger.logUserMessage("User attempted invalid move.");
+            return false;
+        } else {
+            to.push(from.pop());
+            return true;
+        }
     }
 
 
     /**
      * Draws a rectangle where the center of the rectangle is the X, instead of the upper left corner.
      * Height works similar to drawRect.
-     * @param x X value to draw from.
-     * @param y Y value to draw from
-     * @param width Width of the rectangle
-     * @param height height of the rectangle
+     *
+     * @param x        X value to draw from.
+     * @param y        Y value to draw from
+     * @param width    Width of the rectangle
+     * @param height   height of the rectangle
      * @param graphics Graphics to use to draw.
      */
     private void fillCenteredRect(int x, int y, int width, int height, Graphics graphics) { //todo finish this method
-        int newX = x-width/2;
-        graphics.fillRect(newX,y,newX-(newX/2),height);
+        int newX = x - width / 2;
+        graphics.fillRect(newX, y, newX - (newX / 2), height);
     }
 
 }
