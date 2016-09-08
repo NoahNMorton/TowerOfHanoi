@@ -14,7 +14,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
     //private BufferedImage buffer = new BufferedImage(windowWidth, windowHeight, BufferedImage.TYPE_4BYTE_ABGR);
     private int diskHeight, diskWidth;
     //stacks for poles
-    private Stack diskStack1,diskStack2,diskStack3;
+    private Stack diskStack1, diskStack2, diskStack3;
 
     public HanoiFrame(int disksAmt) {
         super("Tower Of Hanoi");// creates the JFrame with the given name
@@ -24,8 +24,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
         diskStack2 = new Stack(0); //other two stacks start empty
         diskStack3 = new Stack(0);
         diskHeight = 300 / disksAmt;
-        diskWidth = 170/disksAmt;
-
+        diskWidth = 170 / disksAmt;
 
         //window handling
         addKeyListener(this);
@@ -42,7 +41,9 @@ public class HanoiFrame extends JFrame implements KeyListener {
         //Graphics bg = buffer.getGraphics();
 
         int poleWidth = 15; //width of the disk poles.
-        int pole1X = (windowWidth / 4)+poleWidth/2; //x position of the left of pole 1.
+        int pole1X = (windowWidth / 4) + poleWidth / 2; //x position of the left of pole 1.
+        int pole2X = 2 * ((windowWidth / 4)) + poleWidth / 2; //x position of the left of pole 2.
+        int pole3X = 3 * ((windowWidth / 4)) + poleWidth / 2; //...
 
         //background --------------------------
         bg.setColor(Color.white);
@@ -63,55 +64,121 @@ public class HanoiFrame extends JFrame implements KeyListener {
 
         if (!diskStack1.empty()) { //don't show anything if the pole is empty
             for (int i = diskStack1.size() - 1; i >= 0; i--) { //goes backwards (upwards) through the stack, drawing each rectangle.
-                    switch (diskStack1.get(i).getSize()) {
-                        case 0: //smallest
-                            bg.setColor(diskStack1.get(i).getColor(0));
-                            fillCenteredRect(pole1X, (i*diskHeight)+160, diskWidth, diskHeight, bg);
-                            break;
-                        case 1:
-                            bg.setColor(diskStack1.get(i).getColor(1));
-                            fillCenteredRect(pole1X,(i*diskHeight)+160 , 2*diskWidth, diskHeight, bg);
-                            break;
-                        case 2:
-                            bg.setColor(diskStack1.get(i).getColor(2));
-                            fillCenteredRect(pole1X, (i*diskHeight)+160, 3*diskWidth, diskHeight, bg);
-                            break;
-                        case 3:
-                            bg.setColor(diskStack1.get(i).getColor(3));
-                            fillCenteredRect(pole1X, (i*diskHeight)+160, 4*diskWidth, diskHeight, bg);
-                            break;
-                        case 4:
-                            bg.setColor(diskStack1.get(i).getColor(4));
-                            fillCenteredRect(pole1X, (i*diskHeight)+160, 5*diskWidth, diskHeight, bg);
-                            break;
-                        case 5:
-                            bg.setColor(diskStack1.get(i).getColor(5));
-                            fillCenteredRect(pole1X, (i*diskHeight)+160, 6*diskWidth, diskHeight, bg);
-                            break;
-                        case 6: //largest
-                            bg.setColor(diskStack1.get(i).getColor(6));
-                            fillCenteredRect(pole1X, (i*diskHeight)+160, 7*diskWidth, diskHeight, bg);
-                            break;
-                        default:
-                            System.err.println("Invalid disk size found. Size is: " + diskStack1.get(i).getSize());
-                            break;
-                    }
+                switch (diskStack1.get(i).getSize()) {
+                    case 0: //smallest
+                        bg.setColor(diskStack1.get(i).getColor(0));
+                        fillCenteredRect(pole1X, (i * diskHeight) + 160, diskWidth, diskHeight, bg);
+                        break;
+                    case 1:
+                        bg.setColor(diskStack1.get(i).getColor(1));
+                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 2 * diskWidth, diskHeight, bg);
+                        break;
+                    case 2:
+                        bg.setColor(diskStack1.get(i).getColor(2));
+                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 3 * diskWidth, diskHeight, bg);
+                        break;
+                    case 3:
+                        bg.setColor(diskStack1.get(i).getColor(3));
+                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 4 * diskWidth, diskHeight, bg);
+                        break;
+                    case 4:
+                        bg.setColor(diskStack1.get(i).getColor(4));
+                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 5 * diskWidth, diskHeight, bg);
+                        break;
+                    case 5:
+                        bg.setColor(diskStack1.get(i).getColor(5));
+                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 6 * diskWidth, diskHeight, bg);
+                        break;
+                    case 6: //largest
+                        bg.setColor(diskStack1.get(i).getColor(6));
+                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 7 * diskWidth, diskHeight, bg);
+                        break;
+                    default:
+                        System.err.println("Invalid disk size found. Size is: " + diskStack1.get(i).getSize());
+                        break;
+                }
             }
         }
 
         //pole 2 ------------------------------
 
+        if (!diskStack2.empty()) { //don't show anything if the pole is empty
+            for (int i = diskStack2.size() - 1; i >= 0; i--) { //goes backwards (upwards) through the stack, drawing each rectangle.
+                switch (diskStack2.get(i).getSize()) {
+                    case 0: //smallest
+                        bg.setColor(diskStack2.get(i).getColor(0));
+                        fillCenteredRect(pole2X, (i * diskHeight) + 160, diskWidth, diskHeight, bg);
+                        break;
+                    case 1:
+                        bg.setColor(diskStack2.get(i).getColor(1));
+                        fillCenteredRect(pole2X, (i * diskHeight) + 160, 2 * diskWidth, diskHeight, bg);
+                        break;
+                    case 2:
+                        bg.setColor(diskStack2.get(i).getColor(2));
+                        fillCenteredRect(pole2X, (i * diskHeight) + 160, 3 * diskWidth, diskHeight, bg);
+                        break;
+                    case 3:
+                        bg.setColor(diskStack2.get(i).getColor(3));
+                        fillCenteredRect(pole2X, (i * diskHeight) + 160, 4 * diskWidth, diskHeight, bg);
+                        break;
+                    case 4:
+                        bg.setColor(diskStack2.get(i).getColor(4));
+                        fillCenteredRect(pole2X, (i * diskHeight) + 160, 5 * diskWidth, diskHeight, bg);
+                        break;
+                    case 5:
+                        bg.setColor(diskStack2.get(i).getColor(5));
+                        fillCenteredRect(pole2X, (i * diskHeight) + 160, 6 * diskWidth, diskHeight, bg);
+                        break;
+                    case 6: //largest
+                        bg.setColor(diskStack2.get(i).getColor(6));
+                        fillCenteredRect(pole2X, (i * diskHeight) + 160, 7 * diskWidth, diskHeight, bg);
+                        break;
+                    default:
+                        System.err.println("Invalid disk size found. Size is: " + diskStack2.get(i).getSize());
+                        break;
+                }
+            }
+        }
 
-        //pole 3
+        //pole 3 ----------------------------------------
 
-
-        //debug statements for visual aid //FIXME remove me once done
-        /*
-        This ends up being 300 px tall, and 170 px wide. It provides a 170x300 space to draw disks.
-        The height per disk will be 300/disk amount.
-         */
-        bg.setColor(Color.black);
-        bg.drawRect(100, 160, 170, 300);
+        if (!diskStack3.empty()) { //don't show anything if the pole is empty
+            for (int i = diskStack3.size() - 1; i >= 0; i--) { //goes backwards (upwards) through the stack, drawing each rectangle.
+                switch (diskStack3.get(i).getSize()) {
+                    case 0: //smallest
+                        bg.setColor(diskStack3.get(i).getColor(0));
+                        fillCenteredRect(pole3X, (i * diskHeight) + 160, diskWidth, diskHeight, bg);
+                        break;
+                    case 1:
+                        bg.setColor(diskStack3.get(i).getColor(1));
+                        fillCenteredRect(pole3X, (i * diskHeight) + 160, 2 * diskWidth, diskHeight, bg);
+                        break;
+                    case 2:
+                        bg.setColor(diskStack3.get(i).getColor(2));
+                        fillCenteredRect(pole3X, (i * diskHeight) + 160, 3 * diskWidth, diskHeight, bg);
+                        break;
+                    case 3:
+                        bg.setColor(diskStack3.get(i).getColor(3));
+                        fillCenteredRect(pole3X, (i * diskHeight) + 160, 4 * diskWidth, diskHeight, bg);
+                        break;
+                    case 4:
+                        bg.setColor(diskStack3.get(i).getColor(4));
+                        fillCenteredRect(pole3X, (i * diskHeight) + 160, 5 * diskWidth, diskHeight, bg);
+                        break;
+                    case 5:
+                        bg.setColor(diskStack3.get(i).getColor(5));
+                        fillCenteredRect(pole3X, (i * diskHeight) + 160, 6 * diskWidth, diskHeight, bg);
+                        break;
+                    case 6: //largest
+                        bg.setColor(diskStack3.get(i).getColor(6));
+                        fillCenteredRect(pole3X, (i * diskHeight) + 160, 7 * diskWidth, diskHeight, bg);
+                        break;
+                    default:
+                        System.err.println("Invalid disk size found. Size is: " + diskStack3.get(i).getSize());
+                        break;
+                }
+            }
+        }
 
         //g.drawImage(buffer, 0, 0, null); //draw buffer to screen
     }
@@ -120,7 +187,6 @@ public class HanoiFrame extends JFrame implements KeyListener {
     private boolean secondKey = false;
     private char firstKeyChar = ' ';
     private char secondKeyChar = ' ';
-
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -157,6 +223,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
                 if (transfer(diskStack3, diskStack1))
                     Logger.logUserMessage("Moved disk from stack 3 to stack 1.");
             }
+            repaint(); //repaint to update graphics.
         }
     }
 
