@@ -12,7 +12,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
     private int windowWidth = 700, windowHeight = 500; //size of the window.
 
     //private BufferedImage buffer = new BufferedImage(windowWidth, windowHeight, BufferedImage.TYPE_4BYTE_ABGR);
-    private int diskHeight, diskWidth;
+    private int diskHeight, diskWidth,moves=0;
     //stacks for poles
     private Stack diskStack1, diskStack2, diskStack3;
 
@@ -200,32 +200,44 @@ public class HanoiFrame extends JFrame implements KeyListener {
             secondKey = false; //next typed key will be first key
             //make the movement
             if (firstKeyChar == '1' && secondKeyChar == '2') { //1>2
-                if (transfer(diskStack1, diskStack2))
+                if (transfer(diskStack1, diskStack2)) {
                     Logger.logUserMessage("Moved disk from stack 1 to stack 2.");
+                    moves++;
+                }
             }
             if (firstKeyChar == '1' && secondKeyChar == '3') { //1>3
-                if (transfer(diskStack1, diskStack3))
+                if (transfer(diskStack1, diskStack3)) {
                     Logger.logUserMessage("Moved disk from stack 1 to stack 3.");
+                    moves++;
+                }
             }
             if (firstKeyChar == '2' && secondKeyChar == '1') { //2>1
-                if (transfer(diskStack2, diskStack1))
+                if (transfer(diskStack2, diskStack1)) {
                     Logger.logUserMessage("Moved disk from stack 2 to stack 1.");
+                    moves++;
+                }
             }
             if (firstKeyChar == '2' && secondKeyChar == '3') { //2>3
-                if (transfer(diskStack2, diskStack3))
+                if (transfer(diskStack2, diskStack3)) {
                     Logger.logUserMessage("Moved disk from stack 2 to stack 3.");
+                    moves++;
+                }
             }
             if (firstKeyChar == '3' && secondKeyChar == '2') { //3>2
-                if (transfer(diskStack3, diskStack2))
+                if (transfer(diskStack3, diskStack2)) {
                     Logger.logUserMessage("Moved disk from stack 3 to stack 2.");
+                    moves++;
+                }
             }
             if (firstKeyChar == '3' && secondKeyChar == '1') { //3>1
-                if (transfer(diskStack3, diskStack1))
+                if (transfer(diskStack3, diskStack1)) {
                     Logger.logUserMessage("Moved disk from stack 3 to stack 1.");
+                    moves++;
+                }
             }
             repaint(); //repaint to update graphics.
             if (checkForWin(diskStack1, diskStack2)) { //check if the user won the game with that move.
-                JOptionPane.showMessageDialog(null, "You win!\nCongrats!");
+                JOptionPane.showMessageDialog(null, "You win! Congrats!\nNumber of moves = "+moves);
                 Logger.logUserMessage("User won the game.");
                 System.exit(0); //exit the game after win.
             }
