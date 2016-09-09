@@ -224,6 +224,11 @@ public class HanoiFrame extends JFrame implements KeyListener {
                     Logger.logUserMessage("Moved disk from stack 3 to stack 1.");
             }
             repaint(); //repaint to update graphics.
+            if(checkForWin(diskStack1,diskStack2)) { //check if the user won the game with that move.
+                JOptionPane.showMessageDialog(null, "You win!\nCongrats!");
+                Logger.logUserMessage("User won the game.");
+                System.exit(0); //exit the game after win.
+            }
         }
     }
 
@@ -242,6 +247,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
      *
      * @param from The stack to move from
      * @param to   The stack to move to.
+     * @return True if successful in moving the disk.
      */
     private static boolean transfer(Stack from, Stack to) {
         if (!(from.empty()) && to.empty()) {
@@ -250,15 +256,16 @@ public class HanoiFrame extends JFrame implements KeyListener {
         }
         if (from.empty() || from.peek().getSize() > to.peek().getSize()) { //if bad move, from is empty, large onto small, etc.
             System.out.println("Invalid move made.");
-            JOptionPane.showMessageDialog(null, "Invalid move. \nTry another move."); //warn the user about invalid move
-            Logger.logUserMessage("User attempted invalid move.");
+            JOptionPane.showMessageDialog(null, "Invalid move. Rules: \nLarger disks cannot be placed onto smaller disks. \nEmpty poles cannot be moved from.",
+                    "Movement error", JOptionPane.ERROR_MESSAGE); //warn the user about invalid move
+
+            Logger.logUserMessage("User attempted an invalid move.");
             return false;
         } else {
             to.push(from.pop());
             return true;
         }
     }
-
 
     /**
      * Draws a rectangle where the center of the rectangle is the X, instead of the upper left corner.
@@ -272,10 +279,16 @@ public class HanoiFrame extends JFrame implements KeyListener {
      */
     private void fillCenteredRect(int x, int y, int width, int height, Graphics graphics) {
         int newX = x - width / 2;
-        /*System.out.println("Pole x is "+x);
-        System.out.println("half of width is "+width/2);
-        System.out.println("New x is:" +newX);*/
         graphics.fillRect(newX, y, width, height);
     }
 
+    /**
+     * Checks to see if the game has been won. Game is won if all disks are on the 3rd pole.
+     * @param diskStack1 The first pole to check
+     * @param diskStack2 The second pole to check
+     * @return win status
+     */
+    private boolean checkForWin(Stack diskStack1, Stack diskStack2) {
+        return diskStack1.empty() && diskStack2.empty();
+    }
 }
