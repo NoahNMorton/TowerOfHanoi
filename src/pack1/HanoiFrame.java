@@ -37,7 +37,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
     }
 
     public void paint(Graphics bg) {
-        //todo paint graphics to screen, reinstate buffered graphics
+        //todo reinstate buffered graphics
         //Graphics bg = buffer.getGraphics();
 
         int poleWidth = 15; //width of the disk poles.
@@ -67,31 +67,31 @@ public class HanoiFrame extends JFrame implements KeyListener {
                 switch (diskStack1.get(i).getSize()) {
                     case 0: //smallest
                         bg.setColor(diskStack1.get(i).getColor(0));
-                        fillCenteredRect(pole1X, (i * diskHeight) + 160, diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole1X, ((i - diskStack1.size()) * diskHeight) + 460, diskWidth, diskHeight, bg);
                         break;
                     case 1:
                         bg.setColor(diskStack1.get(i).getColor(1));
-                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 2 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole1X, ((i - diskStack1.size()) * diskHeight) + 460, 2 * diskWidth, diskHeight, bg);
                         break;
                     case 2:
                         bg.setColor(diskStack1.get(i).getColor(2));
-                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 3 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole1X, ((i - diskStack1.size()) * diskHeight) + 460, 3 * diskWidth, diskHeight, bg);
                         break;
                     case 3:
                         bg.setColor(diskStack1.get(i).getColor(3));
-                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 4 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole1X, ((i - diskStack1.size()) * diskHeight) + 460, 4 * diskWidth, diskHeight, bg);
                         break;
                     case 4:
                         bg.setColor(diskStack1.get(i).getColor(4));
-                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 5 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole1X, ((i - diskStack1.size()) * diskHeight) + 460, 5 * diskWidth, diskHeight, bg);
                         break;
                     case 5:
                         bg.setColor(diskStack1.get(i).getColor(5));
-                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 6 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole1X, ((i - diskStack1.size()) * diskHeight) + 460, 6 * diskWidth, diskHeight, bg);
                         break;
                     case 6: //largest
                         bg.setColor(diskStack1.get(i).getColor(6));
-                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 7 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole1X, ((i - diskStack1.size()) * diskHeight) + 460, 7 * diskWidth, diskHeight, bg);
                         break;
                     default:
                         System.err.println("Invalid disk size found. Size is: " + diskStack1.get(i).getSize());
@@ -107,31 +107,31 @@ public class HanoiFrame extends JFrame implements KeyListener {
                 switch (diskStack2.get(i).getSize()) {
                     case 0: //smallest
                         bg.setColor(diskStack2.get(i).getColor(0));
-                        fillCenteredRect(pole2X, (i * diskHeight) + 160, diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole2X, ((i - diskStack2.size()) * diskHeight) + 460, diskWidth, diskHeight, bg);
                         break;
                     case 1:
                         bg.setColor(diskStack2.get(i).getColor(1));
-                        fillCenteredRect(pole2X, (i * diskHeight) + 160, 2 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole2X, ((i - diskStack2.size()) * diskHeight) + 460, 2 * diskWidth, diskHeight, bg);
                         break;
                     case 2:
                         bg.setColor(diskStack2.get(i).getColor(2));
-                        fillCenteredRect(pole2X, (i * diskHeight) + 160, 3 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole2X, ((i - diskStack2.size()) * diskHeight) + 460, 3 * diskWidth, diskHeight, bg);
                         break;
                     case 3:
                         bg.setColor(diskStack2.get(i).getColor(3));
-                        fillCenteredRect(pole2X, (i * diskHeight) + 160, 4 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole2X, ((i - diskStack2.size()) * diskHeight) + 460, 4 * diskWidth, diskHeight, bg);
                         break;
                     case 4:
                         bg.setColor(diskStack2.get(i).getColor(4));
-                        fillCenteredRect(pole2X, (i * diskHeight) + 160, 5 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole2X, ((i - diskStack2.size()) * diskHeight) + 460, 5 * diskWidth, diskHeight, bg);
                         break;
                     case 5:
                         bg.setColor(diskStack2.get(i).getColor(5));
-                        fillCenteredRect(pole2X, (i * diskHeight) + 160, 6 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole2X, ((i - diskStack2.size()) * diskHeight) + 460, 6 * diskWidth, diskHeight, bg);
                         break;
                     case 6: //largest
                         bg.setColor(diskStack2.get(i).getColor(6));
-                        fillCenteredRect(pole2X, (i * diskHeight) + 160, 7 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole2X, ((i - diskStack2.size()) * diskHeight) + 460, 7 * diskWidth, diskHeight, bg);
                         break;
                     default:
                         System.err.println("Invalid disk size found. Size is: " + diskStack2.get(i).getSize());
@@ -147,31 +147,31 @@ public class HanoiFrame extends JFrame implements KeyListener {
                 switch (diskStack3.get(i).getSize()) {
                     case 0: //smallest
                         bg.setColor(diskStack3.get(i).getColor(0));
-                        fillCenteredRect(pole3X, (i * diskHeight) + 160, diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole3X, ((i - diskStack3.size()) * diskHeight) + 460, diskWidth, diskHeight, bg);
                         break;
                     case 1:
                         bg.setColor(diskStack3.get(i).getColor(1));
-                        fillCenteredRect(pole3X, (i * diskHeight) + 160, 2 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole3X, ((i - diskStack3.size()) * diskHeight) + 460, 2 * diskWidth, diskHeight, bg);
                         break;
                     case 2:
                         bg.setColor(diskStack3.get(i).getColor(2));
-                        fillCenteredRect(pole3X, (i * diskHeight) + 160, 3 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole3X, ((i - diskStack3.size()) * diskHeight) + 460, 3 * diskWidth, diskHeight, bg);
                         break;
                     case 3:
                         bg.setColor(diskStack3.get(i).getColor(3));
-                        fillCenteredRect(pole3X, (i * diskHeight) + 160, 4 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole3X, ((i - diskStack3.size()) * diskHeight) + 460, 4 * diskWidth, diskHeight, bg);
                         break;
                     case 4:
                         bg.setColor(diskStack3.get(i).getColor(4));
-                        fillCenteredRect(pole3X, (i * diskHeight) + 160, 5 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole3X, ((i - diskStack3.size()) * diskHeight) + 460, 5 * diskWidth, diskHeight, bg);
                         break;
                     case 5:
                         bg.setColor(diskStack3.get(i).getColor(5));
-                        fillCenteredRect(pole3X, (i * diskHeight) + 160, 6 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole3X, ((i - diskStack3.size()) * diskHeight) + 460, 6 * diskWidth, diskHeight, bg);
                         break;
                     case 6: //largest
                         bg.setColor(diskStack3.get(i).getColor(6));
-                        fillCenteredRect(pole3X, (i * diskHeight) + 160, 7 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole3X, ((i - diskStack3.size()) * diskHeight) + 460, 7 * diskWidth, diskHeight, bg);
                         break;
                     default:
                         System.err.println("Invalid disk size found. Size is: " + diskStack3.get(i).getSize());
@@ -224,7 +224,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
                     Logger.logUserMessage("Moved disk from stack 3 to stack 1.");
             }
             repaint(); //repaint to update graphics.
-            if(checkForWin(diskStack1,diskStack2)) { //check if the user won the game with that move.
+            if (checkForWin(diskStack1, diskStack2)) { //check if the user won the game with that move.
                 JOptionPane.showMessageDialog(null, "You win!\nCongrats!");
                 Logger.logUserMessage("User won the game.");
                 System.exit(0); //exit the game after win.
@@ -284,6 +284,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
 
     /**
      * Checks to see if the game has been won. Game is won if all disks are on the 3rd pole.
+     *
      * @param diskStack1 The first pole to check
      * @param diskStack2 The second pole to check
      * @return win status
