@@ -67,23 +67,23 @@ public class HanoiFrame extends JFrame implements KeyListener {
                 switch (diskStack1.get(i).getSize()) {
                     case 0: //smallest
                         bg.setColor(diskStack1.get(i).getColor(0));
-                        fillCenteredRect(pole1X, 460-diskHeight-(i * diskHeight), diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole1X, (i * diskHeight) + 160, diskWidth, diskHeight, bg);
                         break;
                     case 1:
                         bg.setColor(diskStack1.get(i).getColor(1));
-                        fillCenteredRect(pole1X, 460-diskHeight-(i * diskHeight), 2 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 2 * diskWidth, diskHeight, bg);
                         break;
                     case 2:
                         bg.setColor(diskStack1.get(i).getColor(2));
-                        fillCenteredRect(pole1X, 460-diskHeight-(i * diskHeight), 3 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 3 * diskWidth, diskHeight, bg);
                         break;
                     case 3:
                         bg.setColor(diskStack1.get(i).getColor(3));
-                        fillCenteredRect(pole1X, 460-diskHeight-(i * diskHeight), 4 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 4 * diskWidth, diskHeight, bg);
                         break;
                     case 4:
                         bg.setColor(diskStack1.get(i).getColor(4));
-                        fillCenteredRect(pole1X, (460-diskHeight)-(i * diskHeight), 5 * diskWidth, diskHeight, bg);
+                        fillCenteredRect(pole1X, (i * diskHeight) + 160, 5 * diskWidth, diskHeight, bg);
                         break;
                     case 5:
                         bg.setColor(diskStack1.get(i).getColor(5));
@@ -224,7 +224,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
                     Logger.logUserMessage("Moved disk from stack 3 to stack 1.");
             }
             repaint(); //repaint to update graphics.
-            if (checkForWin(diskStack1, diskStack2)) { //check if the user won the game with that move.
+            if(checkForWin(diskStack1,diskStack2)) { //check if the user won the game with that move.
                 JOptionPane.showMessageDialog(null, "You win!\nCongrats!");
                 Logger.logUserMessage("User won the game.");
                 System.exit(0); //exit the game after win.
@@ -284,7 +284,6 @@ public class HanoiFrame extends JFrame implements KeyListener {
 
     /**
      * Checks to see if the game has been won. Game is won if all disks are on the 3rd pole.
-     *
      * @param diskStack1 The first pole to check
      * @param diskStack2 The second pole to check
      * @return win status
