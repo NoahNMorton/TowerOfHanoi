@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
 
 @SuppressWarnings({"CanBeFinal", "FieldCanBeLocal", "WeakerAccess"})
@@ -11,8 +12,8 @@ public class HanoiFrame extends JFrame implements KeyListener {
 
     private int windowWidth = 700, windowHeight = 500; //size of the window.
 
-    //private BufferedImage buffer = new BufferedImage(windowWidth, windowHeight, BufferedImage.TYPE_4BYTE_ABGR);
-    private int diskHeight, diskWidth,moves=0;
+    private BufferedImage buffer = new BufferedImage(windowWidth, windowHeight, BufferedImage.TYPE_4BYTE_ABGR);
+    private int diskHeight, diskWidth, moves = 0;
     //stacks for poles
     private Stack diskStack1, diskStack2, diskStack3;
 
@@ -36,9 +37,8 @@ public class HanoiFrame extends JFrame implements KeyListener {
 
     }
 
-    public void paint(Graphics bg) {
-        //todo reinstate buffered graphics
-        //Graphics bg = buffer.getGraphics();
+    public void paint(Graphics g) {
+        Graphics bg = buffer.getGraphics();
 
         int poleWidth = 15; //width of the disk poles.
         int pole1X = (windowWidth / 4) + poleWidth / 2; //x position of the left of pole 1.
@@ -180,13 +180,24 @@ public class HanoiFrame extends JFrame implements KeyListener {
             }
         }
 
-        //g.drawImage(buffer, 0, 0, null); //draw buffer to screen
+        bg.setColor(Color.black);
+        bg.drawString("Current number of moves: " + moves, 10, 40); //move counter
+        bg.drawString("Last move: " + firstKeyChar + " to " + secondKeyChar, 10, 55);
+
+        //indicate the current key
+        if (!secondKey) { //if waiting for first key
+            bg.drawString("Waiting for first key...", 10, 70);
+        } else { //waiting for second key
+            bg.drawString("Waiting for second key...", 10, 70);
+        }
+
+        g.drawImage(buffer, 0, 0, null); //draw buffer to screen
     }
 
     //variables for keyTyped
-    private boolean secondKey = false;
-    private char firstKeyChar = ' ';
-    private char secondKeyChar = ' ';
+    private static boolean secondKey = false;
+    private static char firstKeyChar = ' ';
+    private static char secondKeyChar = ' ';
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -195,6 +206,7 @@ public class HanoiFrame extends JFrame implements KeyListener {
         if (!secondKey) { //if this is the first key pressed
             firstKeyChar = e.getKeyChar();
             secondKey = true; //next key will be the second key
+            repaint();
         } else { //this is the second key
             secondKeyChar = e.getKeyChar();
             secondKey = false; //next typed key will be first key
@@ -237,8 +249,9 @@ public class HanoiFrame extends JFrame implements KeyListener {
             }
             repaint(); //repaint to update graphics.
             if (checkForWin(diskStack1, diskStack2)) { //check if the user won the game with that move.
-                JOptionPane.showMessageDialog(null, "You win! Congrats!\nNumber of moves = "+moves);
-                Logger.logUserMessage("User won the game.");
+                JOptionPane.showMessageDialog(null, "You win! Congrats!\nNumber of moves = " + moves);
+                Logger.logUserMessage("User won the game. Exiting.");
+                Logger.logUserMessage("Number of moves was: " + moves);
                 System.exit(0); //exit the game after win.
             }
         }
