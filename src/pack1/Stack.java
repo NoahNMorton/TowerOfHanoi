@@ -1,6 +1,10 @@
 package pack1;
 
 import java.util.ArrayList;
+/*
+Noah Morton
+Tully 7th period
+ */
 
 public class Stack implements StackInterface<Disk> {
 

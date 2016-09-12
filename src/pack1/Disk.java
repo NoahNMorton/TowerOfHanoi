@@ -1,6 +1,10 @@
 package pack1;
 
 import java.awt.*;
+/*
+Noah Morton
+Tully 7th period
+ */
 
 @SuppressWarnings({"CanBeFinal", "FieldCanBeLocal"})
 public class Disk {

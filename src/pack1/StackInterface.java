@@ -1,4 +1,8 @@
 package pack1;
+/*
+Noah Morton
+Tully 7th period
+ */
 
 @SuppressWarnings("ALL")
 public interface StackInterface<E> {

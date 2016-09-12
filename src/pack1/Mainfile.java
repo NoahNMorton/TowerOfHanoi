@@ -1,6 +1,10 @@
 package pack1;
 
 import javax.swing.*;
+/*
+Noah Morton
+Tully 7th period
+ */
 
 @SuppressWarnings("WeakerAccess")
 public class Mainfile {

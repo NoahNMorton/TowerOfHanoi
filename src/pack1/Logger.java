@@ -12,6 +12,11 @@ import java.io.FileWriter;
  * @version 0.2
  */
 
+/*
+Noah Morton
+Tully 7th period
+ */
+
 @SuppressWarnings("ALL")
 public class Logger {
     private static File f;
